@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FastAPI Project Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            color: #555;
+        }
+
+        p {
+            color: #777;
+        }
+
+        .endpoint {
+            border: 1px solid #ccc;
+            margin: 20px 0;
+            padding: 10px;
+        }
+
+        .code {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px 0;
+        background-color: #f7f7f7;
+        }
+
+        .code pre {
+            white-space: pre-wrap;
+            margin: 0;
+        }
+
+        .info {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>FastAPI Project Documentation</h1>
+
+    <h2>Security</h2>
+    <p>API endpoints are secured with an API key. To access the endpoints, you need to obtain a valid API key. Follow the steps below to get your API key:</p>
+    <ol>
+        <li>Register as a user by calling the following endpoint:</li>
+        <div class="code">
+            GET /generate_key/?user_name=&lt;username&gt;
+        </div>
+        <p>Replace &lt;username&gt; with your desired username. This will generate your API key.</p>
+        <li>Once you have your API key, include it in the headers of your requests with the key name 'api_key'.</li>
+        <div class="code">
+            Headers:
+            <pre>
+api_key: &lt;your_api_key&gt;
+            </pre>
+        </div>
+    </ol>
+
+    <h2>Endpoints</h2>
+
+    <div class="endpoint">
+        <h3>/generate_key/</h3>
+        <p>Generate a new API key for a user.</p>
+        <p class="info">Registers a new user and provides an API key for authentication.</p>
+        <div class="code">
+            GET /generate_key/?user_name=&lt;username&gt;
+        </div>
+        <h4>Example Request:</h4>
+        <div class="code">
+            GET /generate_key/?user_name=JohnDoe
+        </div>
+        <h4>Example Response:</h4>
+        <div class="code">
+            {
+                "status": "User Added",
+                "APIKey": {
+                    "key": "your_api_key",
+                    "username": "JohnDoe"
+                }
+            }
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h3>/add_item/</h3>
+        <p>Create a new item in the 'items' table.</p>
+        <p class="info">Requires a valid API key in the request headers for authentication.</p>
+        <div class="code">
+            POST /add_item/
+            <br>
+            Request Body:
+            <pre>
+{
+    "name": "Example Item",
+    "price": 100
+}
+            </pre>
+        </div>
+        <h4>Example Request:</h4>
+        <div class="code">
+            POST /add_item/
+            <br>
+            Request Body:
+            <pre>
+{
+    "name": "New Item",
+    "price": 200
+}
+            </pre>
+        </div>
+        <h4>Example Response:</h4>
+        <div class="code">
+            {
+                "status": "Item created",
+                "id": 1
+            }
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h3>/get_items/</h3>
+        <p>Retrieve all items from the 'items' table.</p>
+        <p class="info">Requires a valid API key in the request headers for authentication.</p>
+        <div class="code">
+            GET /get_items/
+        </div>
+        <h4>Example Request:</h4>
+        <div class="code">
+            GET /get_items/
+        </div>
+        <h4>Example Response:</h4>
+        <div class="code">
+            {
+                "items": [
+                    {
+                        "id": 1,
+                        "name": "New Item",
+                        "price": 200.00
+                    }
+                ]
+            }
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h3>/get_item/{item_id}</h3>
+        <p>Retrieve a specific item by ID from the 'items' table.</p>
+        <p class="info">Requires a valid API key in the request headers for authentication.</p>
+        <div class="code">
+            GET /get_item/{item_id}
+        </div>
+        <h4>Example Request:</h4>
+        <div class="code">
+            GET /get_item/1
+        </div>
+        <h4>Example Response:</h4>
+        <div class="code">
+            {
+                "item": {
+                    "id": 1,
+                    "name": "New Item",
+                    "price": 200.00
+                }
+            }
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h3>/item/{item_id}</h3>
+        <p>Update a specific item by ID in the 'items' table.</p>
+        <p class="info">Requires a valid API key in the request headers for authentication.</p>
+        <div class="code">
+            PUT /item/{item_id}
+            <br>
+            Request Body:
+            <pre>
+{
+    "name": "Updated Item",
+    "price": 300
+}
+            </pre>
+        </div>
+        <h4>Example Request:</h4>
+        <div class="code">
+            PUT /item/1
+            <br>
+            Request Body:
+            <pre>
+{
+    "name": "Updated Item",
+    "price": 300
+}
+            </pre>
+        </div>
+        <h4>Example Response:</h4>
+        <div class="code">
+            {
+                "status": "Item updated"
+            }
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h3>/items/{item_id}</h3>
+        <p>Delete a specific item by ID from the 'items' table.</p>
+        <p class="info">Requires a valid API key in the request headers for authentication.</p>
+        <div class="code">
+            DELETE /items/{item_id}
+        </div>
+        <h4>Example Request:</h4>
+        <div class="code">
+            DELETE /items/1
+        </div>
+        <h4>Example Response:</h4>
+        <div class="code">
+            {
+                "status": "Item deleted"
+            }
+        </div>
+    </div>
+
+
+</body>
+</html>
