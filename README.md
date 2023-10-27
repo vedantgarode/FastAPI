@@ -205,10 +205,11 @@ curl -X DELETE "http://localhost:8000/items/1"
 
 
 
-Examples
+Examples [Hosted on Railway.io]
 --------
 
-Here are some examples of how to use the application:
+Here are some examples of how to use the Hosted API:
+[DO not Spam Request !!]
 
 *   Generate a new API key for a user:
 ```
