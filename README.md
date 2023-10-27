@@ -57,7 +57,7 @@ The application is structured as follows:
 *   At startup, the application creates items and users tables in the database if they do not exist.
 *   The application provides several API endpoints:
 
-### GET /generate\_key/
+### 🐥GET /generate\_key/
 
 This endpoint generates a new API key for a user.
 
@@ -84,7 +84,7 @@ curl -X GET "http://localhost:8000/generate\_key/?user\_name=johndoe"
 }
    ```         
 
-### POST /add\_item/
+### 🐥POST /add\_item/
 
 This endpoint creates a new item in the 'items' table.
 
@@ -111,7 +111,7 @@ curl -X POST "http://localhost:8000/add\_item/" -H  "accept: application/json" -
 }
   ```         
 
-### GET /get\_items/
+### 🐥GET /get\_items/
 
 This endpoint retrieves all items from the 'items' table.
 
@@ -138,7 +138,7 @@ curl -X GET "http://localhost:8000/get\_items/"
 }
     ```        
 
-### GET /get\_item/{item\_id}
+### 🐥GET /get\_item/{item\_id}
 
 This endpoint retrieves a specific item by ID from the 'items' table.
 
@@ -160,7 +160,7 @@ curl -X GET "http://localhost:8000/get\_item/1"
 }
             
 ```
-### PUT /item/{item :Item}
+### 🐥PUT /item/{item :Item}
 
 This endpoint updates a specific item by ID in the 'items' table.
 
@@ -187,7 +187,7 @@ curl -X PUT "http://localhost:8000/item/" -H  "accept: application/json" -H  "Co
 }
 ```         
 
-### DELETE /items/{item\_id}
+### 🐥DELETE /items/{item\_id}
 
 This endpoint deletes a specific item by ID from the 'items' table.
 
