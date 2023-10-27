@@ -71,11 +71,12 @@
 </head>
 <body>
     <div class="container">
-        <h1>FastAPI Application</h1>
+        <h1>Vedant Garode FastAPI Application</h1>
+
         <p>This is the README documentation for a FastAPI application that provides a simple API for managing Items and API keys for users. The application uses PostgreSQL as a database backend.</p>
 
         <h2>Description</h2>
-        <p>The application is built with FastAPI, a modern, fast web framework for building APIs with Python 3.6+ based on standard Python type hints. It features automatic interactive API documentation, easy to learn, and is highly scalable <a href="https://github.com/tiangolo/fastapi" target="_blank">github.com</a>.</p>
+        <p>The application is built with FastAPI, a modern, fast web framework for building APIs with Python 3.6+ based on standard Python type hints. It features automatic interactive API documentation, easy to learn, and is highly scalable <a href="https://github.com/vedantgarode/FastAPI" target="_blank">github.com</a>.</p>
 
         <p>This application has various functionalities including user authentication using API keys, CRUD operations for items, and automatic creation of database tables at startup.</p>
 
@@ -272,7 +273,7 @@ curl -X DELETE "http://localhost:8000/items/1"
         </ul>
         <div class="code">
             <pre>
-curl -X GET "http://localhost:8000/generate_key/?user_name=johndoe"
+curl -X GET "http://roundhouse.proxy.rlwy.net:50234/generate_key/?user_name=johndoe"
             </pre>
         </div>
         <ul start="2">
@@ -280,7 +281,7 @@ curl -X GET "http://localhost:8000/generate_key/?user_name=johndoe"
         </ul>
         <div class="code">
             <pre>
-curl -X POST "http://localhost:8000/add_item/" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"name\":\"item1\",\"price\":10}"
+curl -X POST "http://roundhouse.proxy.rlwy.net:50234/add_item/" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"name\":\"item1\",\"price\":10}"
             </pre>
         </div>
         <ul start="3">
@@ -288,7 +289,7 @@ curl -X POST "http://localhost:8000/add_item/" -H  "accept: application/json" -H
         </ul>
         <div class="code">
             <pre>
-curl -X GET "http://localhost:8000/get_items/"
+curl -X GET "http://roundhouse.proxy.rlwy.net:50234/get_items/"
             </pre>
         </div>
         <ul start="4">
@@ -296,7 +297,7 @@ curl -X GET "http://localhost:8000/get_items/"
         </ul>
         <div class="code">
             <pre>
-curl -X GET "http://localhost:8000/get_item/1"
+curl -X GET "http://roundhouse.proxy.rlwy.net:50234/get_item/1"
             </pre>
         </div>
         <ul start="5">
@@ -304,7 +305,7 @@ curl -X GET "http://localhost:8000/get_item/1"
         </ul>
         <div class="code">
             <pre>
-curl -X PUT "http://localhost:8000/item/" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"name\":\"item2\",\"price\":20}"
+curl -X PUT "http://roundhouse.proxy.rlwy.net:50234/item/" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"name\":\"item2\",\"price\":20}"
             </pre>
         </div>
         <ul start="6">
@@ -312,7 +313,7 @@ curl -X PUT "http://localhost:8000/item/" -H  "accept: application/json" -H  "Co
         </ul>
         <div class="code">
             <pre>
-curl -X DELETE "http://localhost:8000/items/1"
+curl -X DELETE "http://roundhouse.proxy.rlwy.net:50234/items/1"
             </pre>
         </div>
     </div>

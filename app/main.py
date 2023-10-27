@@ -5,6 +5,8 @@ import psycopg2
 from secrets import token_urlsafe
 import os
 from dotenv import load_dotenv
+from hashlib import sha256
+
 
 load_dotenv()
 
@@ -21,7 +23,8 @@ class APIKey(BaseModel):
 def validate_api_key(api_key: str):
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute(f"SELECT api_key FROM users WHERE api_key = '{api_key}'")
+    hash_api_key = sha256(api_key.encode('utf-8')).hexdigest()
+    cur.execute(f"SELECT api_key FROM users WHERE api_key = '{hash_api_key}'")
     valid_key = cur.fetchone()
     conn.close()
     return valid_key is not None
@@ -114,12 +117,13 @@ def key_generator(user_name: str):
 
     # Generate a new API key
     new_api_key = token_urlsafe(16)
-
+    new_api_key_hash = sha256(new_api_key.encode('utf-8')).hexdigest()
     # Insert the new user
-    cur.execute("INSERT INTO users (username, api_key) VALUES (%s, %s)", (user_name, new_api_key))
+    cur.execute("INSERT INTO users (username, api_key) VALUES (%s, %s)", (user_name, new_api_key_hash))
     conn.commit()
 
     conn.close()
+    
     return {"status": "User Added", "APIKey": APIKey(key=new_api_key, username=user_name)}
 
 # Create a new item in the 'items' table
