@@ -86,19 +86,21 @@ def create_users_table_if_not_exist():
 app = FastAPI()
 
 # Event handler to create tables when the application starts
-@app.on_event("startup")
-def startup_event():
-    create_items_table_if_not_exist()
-    create_users_table_if_not_exist()
+
+    
 
 # Serve the index.html page from the 'static' directory
 @app.get("/")
 async def read_index():
+    create_items_table_if_not_exist()
+    create_users_table_if_not_exist()
     return FileResponse('static/index.html')
 
 # Generate a new API key for a user
 @app.get("/generate_key/")
 def key_generator(user_name: str):
+    create_items_table_if_not_exist()
+    create_users_table_if_not_exist()
     conn = get_db_connection()
     cur = conn.cursor()
 
@@ -123,6 +125,8 @@ def key_generator(user_name: str):
 # Create a new item in the 'items' table
 @app.post("/add_item/")
 def create_item(item: Item, api_key: str = Depends(get_api_key)):
+    create_items_table_if_not_exist()
+    create_users_table_if_not_exist()
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute(f"INSERT INTO items (name, price) VALUES ('{item.name}', '{item.price}') RETURNING id")
@@ -133,6 +137,8 @@ def create_item(item: Item, api_key: str = Depends(get_api_key)):
 # Retrieve all items from the 'items' table
 @app.get("/get_items/")
 async def read_items(api_key: str = Depends(get_api_key)):
+    create_items_table_if_not_exist()
+    create_users_table_if_not_exist()
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute("SELECT * FROM items")
@@ -153,6 +159,8 @@ async def read_items(api_key: str = Depends(get_api_key)):
 # Retrieve a specific item by ID from the 'items' table
 @app.get("/get_item/{item_id}")
 async def read_item(item_id: int, api_key: str = Depends(get_api_key)):
+    create_items_table_if_not_exist()
+    create_users_table_if_not_exist()
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute(f"SELECT * FROM items WHERE id = {item_id}")
@@ -173,6 +181,8 @@ async def read_item(item_id: int, api_key: str = Depends(get_api_key)):
 # Update a specific item by ID in the 'items' table
 @app.put("/item/{item :Item}")
 async def update_item( item :Item,  api_key: str = Depends(get_api_key)):
+    create_items_table_if_not_exist()
+    create_users_table_if_not_exist()
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute("UPDATE items SET name = %s, price = %s WHERE id = %s", (item.name, item.price, item.id))
@@ -182,6 +192,8 @@ async def update_item( item :Item,  api_key: str = Depends(get_api_key)):
 # Delete a specific item by ID from the 'items' table
 @app.delete("/items/{item_id}")
 async def delete_item(item_id: int, api_key: str = Depends(get_api_key)):
+    create_items_table_if_not_exist()
+    create_users_table_if_not_exist()
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute("DELETE FROM items WHERE id = %s", (item_id,))

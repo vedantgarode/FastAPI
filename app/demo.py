@@ -12,5 +12,10 @@ conn = psycopg2.connect(
     port = os.getenv("DB_PORT"),
     sslmode='require',
 )
+cur = conn.cursor()
+cur.execute(f"INSERT INTO items (name, price) VALUES ('Honda', '20000') RETURNING id")
+item_id = cur.fetchone()[0]
+conn.commit()
+print(item_id)
 
 
