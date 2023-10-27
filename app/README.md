@@ -52,54 +52,15 @@ The application uses API keys for user authentication. Before processing API req
 Examples
 Here are some examples of how to use the application:
 
-<h2>Examples</h2>
-        <p>Here are some examples of how to use the application:</p>
-        <ul>
-            <li>Generate a new API key for a user:</li>
-        </ul>
-        <div class="code">
-            <pre>
-curl -X GET "http://roundhouse.proxy.rlwy.net:50234/generate_key/?user_name=johndoe"
-            </pre>
-        </div>
-        <ul start="2">
-            <li>Add a new item:</li>
-        </ul>
-        <div class="code">
-            <pre>
-curl -X POST "http://roundhouse.proxy.rlwy.net:50234/add_item/" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"name\":\"item1\",\"price\":10}"
-            </pre>
-        </div>
-        <ul start="3">
-            <li>Get all items:</li>
-        </ul>
-        <div class="code">
-            <pre>
-curl -X GET "http://roundhouse.proxy.rlwy.net:50234/get_items/"
-            </pre>
-        </div>
-        <ul start="4">
-            <li>Get a specific item:</li>
-        </ul>
-        <div class="code">
-            <pre>
-curl -X GET "http://roundhouse.proxy.rlwy.net:50234/get_item/1"
-            </pre>
-        </div>
-        <ul start="5">
-            <li>Update an item:</li>
-        </ul>
-        <div class="code">
-            <pre>
-curl -X PUT "http://roundhouse.proxy.rlwy.net:50234/item/" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"name\":\"item2\",\"price\":20}"
-            </pre>
-        </div>
-        <ul start="6">
-            <li>Delete an item:</li>
-        </ul>
-        <div class="code">
-            <pre>
-curl -X DELETE "http://roundhouse.proxy.rlwy.net:50234/items/1"
-            </pre>
-        </div>
-    </div>
+Generate a new API key for a user:
+curl -X GET "http://localhost:8000/generate_key/?user_name=johndoe"
+Add a new item:
+curl -X POST "http://localhost:8000/add_item/" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"name\":\"item1\",\"price\":10}"
+Get all items:
+curl -X GET "http://localhost:8000/get_items/"
+Get a specific item:
+curl -X GET "http://localhost:8000/get_item/1"
+Update an item:
+curl -X PUT "http://localhost:8000/item/" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"name\":\"item2\",\"price\":20}"
+Delete an item:
+curl -X DELETE "http://localhost:8000/items/1"
