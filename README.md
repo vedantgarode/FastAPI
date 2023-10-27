@@ -28,7 +28,7 @@ Before you begin, ensure you have met the following requirements:
 ```
 pip install fastapi
 
-pip install "hypercorn"
+pip install hypercorn
 ```
 # Usage
 -----
