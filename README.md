@@ -46,7 +46,8 @@ pip install -r requirements.txt
 ```
 hypercorn main:app --reload
 ```
-2.  Open your web browser and navigate to [http://localhost:8000/](http://localhost:8000/). The application will serve an index.html page from the 'static' directory. For API documentation, navigate to [http://localhost:8000/docs](http://localhost:8000/docs). You will see the automatic interactive API documentation (provided by Swagger UI).
+4. Front End 
+Open your web browser and navigate to [http://localhost:8000/](http://localhost:8000/). The application will serve an index.html page from the 'static' directory. For API documentation, navigate to [http://localhost:8000/docs](http://localhost:8000/docs). You will see the automatic interactive API documentation (provided by Swagger UI).
 
 # Application Structure
 ---------------------
