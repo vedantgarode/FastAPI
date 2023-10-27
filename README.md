@@ -209,7 +209,7 @@ Examples [Hosted on Railway.io]
 --------
 
 Here are some examples of how to use the Hosted API:
-[DO not Spam Request !!]
+**[ Please Do not Spam Request !! It is on Free Plan]**
 
 *   Generate a new API key for a user:
 ```

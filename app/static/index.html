@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>FastAPI Application Documentation</title>
+    <title>Vedant FastAPI Application</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,14 +14,13 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background-color: white;
+            background-color: #ffffff;
             border: 1px solid #ccc;
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
             border-radius: 5px;
         }
         h1 {
             font-size: 24px;
-            margin-top: 0;
             color: #333;
         }
         h2 {
@@ -40,7 +39,8 @@
             font-size: 14px;
             color: #777;
         }
-        .code {
+        pre {
+            font-family: Consolas, monospace;
             background-color: #f1f1f1;
             border: 1px solid #ccc;
             padding: 10px;
@@ -71,33 +71,50 @@
 </head>
 <body>
     <div class="container">
-        <h1>Vedant Garode FastAPI Application</h1>
-
-        <p>This is the README documentation for a FastAPI application that provides a simple API for managing Items and API keys for users. The application uses PostgreSQL as a database backend.</p>
+        <h1>Vedant FastAPI Application</h1>
+        <hr>
 
         <h2>Description</h2>
-        <p>The application is built with FastAPI, a modern, fast web framework for building APIs with Python 3.6+ based on standard Python type hints. It features automatic interactive API documentation, easy to learn, and is highly scalable <a href="https://github.com/vedantgarode/FastAPI" target="_blank">github.com</a>.</p>
+        <p>
+            This is the README documentation for a FastAPI application that provides a simple API for managing Items and API keys for users. The application uses PostgreSQL as a database backend.
+        </p>
 
-        <p>This application has various functionalities including user authentication using API keys, CRUD operations for items, and automatic creation of database tables at startup.</p>
+        <h2>Security</h2>
+        <p>
+            The application uses API keys for user authentication. Before processing API requests, it validates the API key provided in the request header against the keys stored in the users table in the database. If the API key is invalid or not provided, it raises an HTTPException with status code 401.
+        </p>
+        <p>
+            The API keys are hashed using the SHA-256 algorithm for secure storage. SHA-256 (Secure Hash Algorithm 256 bit) is a cryptographic hash function that produces a 256-bit (32-byte) hash value. It's commonly used in security applications and protocols.
+        </p>
 
         <h2>Prerequisites</h2>
         <p>Before you begin, ensure you have met the following requirements:</p>
         <ul>
             <li>You have installed Python 3.6+.</li>
             <li>You have installed PostgreSQL.</li>
-            <li>You have installed FastAPI and Uvicorn. You can install them with pip:</li>
+            <li>You have installed FastAPI and hypercorn. You can install them with pip:</li>
         </ul>
-        <pre class="command">pip install fastapi</pre>
-        <pre class="command">pip install "uvicorn[standard]"</pre>
+        <pre>
+            pip install fastapi
+            pip install hypercorn
+        </pre>
 
         <h2>Usage</h2>
         <p>To use the FastAPI application, follow these steps:</p>
         <ol>
+            <li>Clone this repository using git clone:</li>
+        </ol>
+        <pre>git clone https://github.com/vedantgarode/FastAPI</pre>
+        <ol start="2">
+            <li>Go to the app directory and install all the dependencies:</li>
+        </ol>
+        <pre>pip install -r requirements.txt</pre>
+        <ol start="3">
             <li>Run the application using Uvicorn:</li>
         </ol>
-        <pre class="command" >uvicorn main:app --reload</pre>
-        <ol start="2">
-            <li>Open your web browser and navigate to <a href="http://localhost:8000/" target="_blank">http://localhost:8000/</a>. The application will serve an index.html page from the 'static' directory. For API documentation, navigate to <a href="http://localhost:8000/docs" target="_blank">http://localhost:8000/docs</a>. You will see the automatic interactive API documentation (provided by Swagger UI).</li>
+        <pre>hypercorn main:app --reload</pre>
+        <ol start="4">
+            <li>Open your web browser and navigate to <a class="link" href="http://localhost:8000/" target="_blank">http://localhost:8000/</a>. The application will serve an index.html page from the 'static' directory. For API documentation, navigate to <a class="link" href="http://localhost:8000/docs" target="_blank">http://localhost:8000/docs</a>. You will see the automatic interactive API documentation (provided by Swagger UI).</li>
         </ol>
 
         <h2>Application Structure</h2>
@@ -111,7 +128,7 @@
         <h3>GET /generate_key/</h3>
         <p>This endpoint generates a new API key for a user.</p>
         <div class="code">
-            Request Body:
+            <h4>Request Body:</h4>
             <pre>
 {
     "user_name": "johndoe"
@@ -140,7 +157,7 @@ curl -X GET "http://localhost:8000/generate_key/?user_name=johndoe"
         <h3>POST /add_item/</h3>
         <p>This endpoint creates a new item in the 'items' table.</p>
         <div class="code">
-            Request Body:
+            <h4>Request Body:</h4>
             <pre>
 {
     "item": {
@@ -220,7 +237,7 @@ curl -X GET "http://localhost:8000/get_item/1"
         <h3>PUT /item/{item :Item}</h3>
         <p>This endpoint updates a specific item by ID in the 'items' table.</p>
         <div class="code">
-            Request Body:
+            <h4>Request Body:</h4>
             <pre>
 {
     "item": {
@@ -263,11 +280,9 @@ curl -X DELETE "http://localhost:8000/items/1"
             </pre>
         </div>
 
-        <h2>Security</h2>
-        <p>The application uses API keys for user authentication. Before processing API requests, it validates the API key provided in the request header against the keys stored in the users table in the database. If the API key is invalid or not provided, it raises an HTTPException with status code 401.</p>
-
-        <h2>Examples</h2>
-        <p>Here are some examples of how to use the application:</p>
+        <h2>Examples [Hosted on Railway.io]</h2>
+        <p>Here are some examples of how to use the Hosted API:</p>
+        <p><strong>[ Please Do not Spam Request !! It is on Free Plan]</strong></p>
         <ul>
             <li>Generate a new API key for a user:</li>
         </ul>
@@ -276,7 +291,7 @@ curl -X DELETE "http://localhost:8000/items/1"
 curl -X GET "http://roundhouse.proxy.rlwy.net:50234/generate_key/?user_name=johndoe"
             </pre>
         </div>
-        <ul start="2">
+        <ul>
             <li>Add a new item:</li>
         </ul>
         <div class="code">
@@ -284,7 +299,7 @@ curl -X GET "http://roundhouse.proxy.rlwy.net:50234/generate_key/?user_name=john
 curl -X POST "http://roundhouse.proxy.rlwy.net:50234/add_item/" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"name\":\"item1\",\"price\":10}"
             </pre>
         </div>
-        <ul start="3">
+        <ul>
             <li>Get all items:</li>
         </ul>
         <div class="code">
@@ -292,30 +307,19 @@ curl -X POST "http://roundhouse.proxy.rlwy.net:50234/add_item/" -H  "accept: app
 curl -X GET "http://roundhouse.proxy.rlwy.net:50234/get_items/"
             </pre>
         </div>
-        <ul start="4">
+        <ul>
             <li>Get a specific item:</li>
         </ul>
         <div class="code">
-            <pre>
-curl -X GET "http://roundhouse.proxy.rlwy.net:50234/get_item/1"
-            </pre>
-        </div>
-        <ul start="5">
+            <pre>curl -X GET "http://roundhouse.proxy.rlwy.net:50234/get\_item/1"</pre>
+        <ul>
             <li>Update an item:</li>
         </ul>
         <div class="code">
-            <pre>
-curl -X PUT "http://roundhouse.proxy.rlwy.net:50234/item/" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\"name\":\"item2\",\"price\":20}"
-            </pre>
-        </div>
-        <ul start="6">
+            <pre>curl -X PUT "http://roundhouse.proxy.rlwy.net:50234/item/" -H  "accept: application/json" -H  "Content-Type: application/json" -d "{\\"name\\":\\"item2\\",\\"price\\":20}"</pre>
+        <ul>
             <li>Delete an item:</li>
         </ul>
         <div class="code">
-            <pre>
-curl -X DELETE "http://roundhouse.proxy.rlwy.net:50234/items/1"
-            </pre>
-        </div>
-    </div>
-</body>
-</html>
+            <pre>curl -X DELETE "http://roundhouse.proxy.rlwy.net:50234/items/1"</pre>
+        
