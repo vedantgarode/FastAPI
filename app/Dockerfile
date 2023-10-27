@@ -17,4 +17,4 @@ ENV FASTAPI_HOST 0.0.0.0
 ENV FASTAPI_PORT 80
 
 # Run app.py when the container launches
-CMD ["hypercorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["hypercorn", "main:app", "--bind", "0.0.0.0:80"]
